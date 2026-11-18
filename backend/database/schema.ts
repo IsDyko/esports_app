@@ -32,9 +32,160 @@ export class AuthAccessTokenSchema extends BaseModel {
   declare updatedAt: DateTime | null
 }
 
+export class GameSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'imageUrl', 'name', 'slug', 'updatedAt'] as const
+  $columns = GameSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare imageUrl: string | null
+  @column()
+  declare name: string
+  @column()
+  declare slug: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class MatchSchema extends BaseModel {
+  static $columns = ['awayEntryId', 'awayScore', 'createdAt', 'homeEntryId', 'homeScore', 'id', 'roundNumber', 'scheduledAt', 'status', 'tournamentId', 'updatedAt'] as const
+  $columns = MatchSchema.$columns
+  @column()
+  declare awayEntryId: number
+  @column()
+  declare awayScore: number | null
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare homeEntryId: number
+  @column()
+  declare homeScore: number | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare roundNumber: number
+  @column.dateTime()
+  declare scheduledAt: DateTime | null
+  @column()
+  declare status: string | null
+  @column()
+  declare tournamentId: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class PredictionSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'matchId', 'pointsEarned', 'predictedAwayScore', 'predictedHomeScore', 'updatedAt', 'userId'] as const
+  $columns = PredictionSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare matchId: number
+  @column()
+  declare pointsEarned: number | null
+  @column()
+  declare predictedAwayScore: number
+  @column()
+  declare predictedHomeScore: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+  @column()
+  declare userId: number
+}
+
+export class TeamMemberSchema extends BaseModel {
+  static $columns = ['id', 'joinedAt', 'leftAt', 'teamId', 'userId'] as const
+  $columns = TeamMemberSchema.$columns
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime()
+  declare joinedAt: DateTime
+  @column.dateTime()
+  declare leftAt: DateTime | null
+  @column()
+  declare teamId: number
+  @column()
+  declare userId: number
+}
+
+export class TeamSchema extends BaseModel {
+  static $columns = ['captainId', 'createdAt', 'description', 'id', 'logoUrl', 'name', 'tag', 'updatedAt'] as const
+  $columns = TeamSchema.$columns
+  @column()
+  declare captainId: number
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare description: string | null
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare logoUrl: string | null
+  @column()
+  declare name: string
+  @column()
+  declare tag: string
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class TournamentEntrySchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'registeredAt', 'status', 'teamId', 'tournamentId', 'updatedAt'] as const
+  $columns = TournamentEntrySchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: number
+  @column.dateTime()
+  declare registeredAt: DateTime
+  @column()
+  declare status: string | null
+  @column()
+  declare teamId: number
+  @column()
+  declare tournamentId: number
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
+export class TournamentSchema extends BaseModel {
+  static $columns = ['createdAt', 'description', 'endsAt', 'gameId', 'id', 'maxTeams', 'name', 'organizerId', 'registrationDeadline', 'startsAt', 'status', 'updatedAt'] as const
+  $columns = TournamentSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare description: string | null
+  @column.dateTime()
+  declare endsAt: DateTime | null
+  @column()
+  declare gameId: number
+  @column({ isPrimary: true })
+  declare id: number
+  @column()
+  declare maxTeams: number
+  @column()
+  declare name: string
+  @column()
+  declare organizerId: number
+  @column.dateTime()
+  declare registrationDeadline: DateTime | null
+  @column.dateTime()
+  declare startsAt: DateTime
+  @column()
+  declare status: string | null
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
+  declare updatedAt: DateTime | null
+}
+
 export class UserSchema extends BaseModel {
-  static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
+  static $columns = ['avatarUrl', 'createdAt', 'email', 'fullName', 'id', 'password', 'role', 'updatedAt', 'username'] as const
   $columns = UserSchema.$columns
+  @column()
+  declare avatarUrl: string | null
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
   @column()
@@ -45,6 +196,10 @@ export class UserSchema extends BaseModel {
   declare id: number
   @column({ serializeAs: null })
   declare password: string
+  @column()
+  declare role: string | null
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
+  @column()
+  declare username: string
 }

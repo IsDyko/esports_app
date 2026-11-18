@@ -1,0 +1,6 @@
+name: Esports
+variables:
+  - name: baseURL
+    value: http://localhost:3333
+  - secret: true
+    name: token
