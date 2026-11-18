@@ -36,4 +36,4 @@ router
   })
   .prefix('/api/v1')
 
-	router.resource('games', controllers.Games).apiOnly()
+	router.resource('games', controllers.Games).apiOnly().use(['store', 'update', 'destroy'], middleware.auth({guards: ['api']}))
