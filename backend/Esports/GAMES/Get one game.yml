@@ -1,0 +1,19 @@
+info:
+  name: Get one game
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: '{{baseURL}}/games/:id'
+  params:
+    - name: id
+      value: '6'
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,15 @@
+info:
+  name: Get all games
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: '{{baseURL}}/games'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

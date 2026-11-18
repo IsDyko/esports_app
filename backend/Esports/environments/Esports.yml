@@ -2,5 +2,5 @@ name: Esports
 variables:
   - name: baseURL
     value: http://localhost:3333
-  - secret: true
-    name: token
+  - name: token
+    value: oat_MQ.MnpGWEVFOHRjYTc4V0hEQXJjb3F4RGhUSlRDd2ZkQVkxWVlQODBxTzEzMjEzNzU1MjI

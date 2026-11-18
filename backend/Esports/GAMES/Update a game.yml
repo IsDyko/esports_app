@@ -1,0 +1,25 @@
+info:
+  name: Update a game
+  type: http
+  seq: 1
+
+http:
+  method: PATCH
+  url: '{{baseURL}}/games/:id'
+  params:
+    - name: id
+      value: '6'
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Rainbow Six Siege X"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

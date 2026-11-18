@@ -32,6 +32,36 @@ const routes = {
     tokens: [[0,"api"],[0,"v1"],[0,"account"],[0,"logout"]],
     types: placeholder as Registry['profile.access_tokens.destroy']['types'],
   },
+  'games.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/games',
+    tokens: [[0,"games"]],
+    types: placeholder as Registry['games.index']['types'],
+  },
+  'games.store': {
+    methods: ["POST"],
+    pattern: '/games',
+    tokens: [[0,"games"]],
+    types: placeholder as Registry['games.store']['types'],
+  },
+  'games.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/games/:id',
+    tokens: [[0,"games"],[1,"id"]],
+    types: placeholder as Registry['games.show']['types'],
+  },
+  'games.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/games/:id',
+    tokens: [[0,"games"],[1,"id"]],
+    types: placeholder as Registry['games.update']['types'],
+  },
+  'games.destroy': {
+    methods: ["DELETE"],
+    pattern: '/games/:id',
+    tokens: [[0,"games"],[1,"id"]],
+    types: placeholder as Registry['games.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }
